@@ -52,9 +52,54 @@ int main (){
     }
     //Accept a connection
     printf("Waiting for connections\n");
-    socklen_t client_addr_size = sizeof(server_addr);
+    struct sockaddr_in client_addr;
+    socklen_t clientAdressLen = sizeof(client_addr);
 
-    
+    for (int i = 0 ; i < 2 ; i++){ 
+        if (sock == -1 ){
+            printf("Error accepting connection\n");
+            exit(1);
+        }
+        socklen_t len = sizeof(buffer);
+        if (getsocketopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0){
+            printf("Error getting socket option\n");
+            exit(1);
+        }
+        strcpy(buffer, i > 0 ? "reno" : "cubic");
+        len = sizeof(buffer);
+        if (setsocketopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, len) < 0){
+            printf("Error setting socket option\n");
+            exit(1);
+        }
+        len = sizeof(buffer);
+        if (getsocketopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0){
+            printf("Error getting socket option\n");
+            exit(1);
+        }
+        double avg = 0 ; 
+        for (int j = 0 ; j < 5 ; j++ ){
+            memset(clientAdressLen, 0, sizeof(clientAdressLen));
+            clientAdressLen  = sizeof(client_addr);
+            int client_sock = accept(sock, (struct sockaddr *) &client_addr, &clientAdressLen);
+            if (client_sock < 0){
+                printf("Error accepting connection\n");
+                exit(1);
+            }
+            //Receive data from the client
+            printf("Start timer \n");
+            struct timespec start, end;
+            clock_gettime(CLOCK_REALTIME, &start); // need to check that this works
+            
+
+
+
+        }
+
+
+
+    }
+
+
 
 
     return 0 ; 
