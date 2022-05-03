@@ -89,18 +89,30 @@ int main (){
             printf("Start timer \n");
             struct timespec start, end;
             clock_gettime(CLOCK_REALTIME, &start); // need to check that this works
-            
 
+            int bytes_read = -1; 
+            while (bytes_read != 0){
+                memset(buffer, 0, sizeof(buffer));
+                bytes_read = recv(client_sock, buffer, 1024, 0);
+            }
+            clock_gettime(CLOCK_REALTIME, &end);
+            double time_taken = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1000000000.0;
+            printf("Time for package %d is %f \n", i+j, time_taken);
+
+            avg += time_taken;
+
+            sleep(1);
+        
 
 
         }
 
-
+    printf("\n Avg time for %s is %f \n", buffer, avg/5);
+    
 
     }
 
 
-
-
+    close(sock);
     return 0 ; 
 }
