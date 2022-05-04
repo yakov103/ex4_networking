@@ -12,7 +12,9 @@
 #include <signal.h>
 #include <time.h>
 
-#define SERVER_PORT 8080 //The port that the server listens
+#define SERVER_PORT 5050 //The port that the server listens
+
+
 
 int main (){
     char buffer[1024];
@@ -61,24 +63,23 @@ int main (){
             exit(1);
         }
         socklen_t len = sizeof(buffer);
-        if (getsocketopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0){
+        if (getsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0){
             printf("Error getting socket option\n");
             exit(1);
         }
         strcpy(buffer, i > 0 ? "reno" : "cubic");
         len = sizeof(buffer);
-        if (setsocketopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, len) < 0){
+        if (getsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0){
             printf("Error setting socket option\n");
             exit(1);
         }
         len = sizeof(buffer);
-        if (getsocketopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0){
+        if (getsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0){
             printf("Error getting socket option\n");
             exit(1);
         }
         double avg = 0 ; 
         for (int j = 0 ; j < 5 ; j++ ){
-            memset(clientAdressLen, 0, sizeof(clientAdressLen));
             clientAdressLen  = sizeof(client_addr);
             int client_sock = accept(sock, (struct sockaddr *) &client_addr, &clientAdressLen);
             if (client_sock < 0){
@@ -108,8 +109,6 @@ int main (){
         }
 
     printf("\n Avg time for %s is %f \n", buffer, avg/5);
-    
-
     }
 
 

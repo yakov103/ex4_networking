@@ -13,7 +13,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#define SERVER_Port 8080
+#define SERVER_Port 5050
 #define SERVER_IP "127.0.0.1"
 
 #define MBtoByte 1048576 // 1048576 -> 1MB TO 1048576 Bytes
@@ -28,18 +28,18 @@ int main(){
                 exit(1);
             }
             socklen_t len = sizeof(buffer);
-            if (getsocketopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0) {
+            if (getsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0) {
                 printf("Error getting socket option\n");
                 exit(1);
             }
             strcpy(buffer, i > 0 ? "reno" : "cubic");
             len = sizeof(buffer);
-            if (setsocketopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, len) < 0) {
+            if (getsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len ) < 0) {
                 printf("Error setting socket option\n");
                 exit(1);
             }
             len = sizeof(buffer);
-            if (getsocketopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0) {
+            if (getsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0) {
                 printf("Error getting socket option\n");
                 exit(1);
             }
@@ -66,7 +66,7 @@ int main(){
 
             printf("Connected to server\n");
             // Send the message to the server
-            FILE *fp = fopen("./1MBfile.txt", "r");
+            FILE *fp = fopen("./1mb.txt", "r");
 
             if(fp == NULL){
                 printf("Error opening file\n");
@@ -74,7 +74,7 @@ int main(){
             }
             int data_strm; 
             int total_bytes = 0;
-            while( 0 < (data_strm == fread(buffer, 1, sizeof(buffer), fp))){
+            while( 0 < (data_strm = fread(buffer, 1, sizeof(buffer), fp))){
                int bytes_sent = send(sock, buffer, data_strm, 0);
                 if(bytes_sent < 0){
                      printf("Error sending data\n");
