@@ -1,13 +1,8 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/yakovkhodorkovski/Desktop/ex4_netwoking_s/ex4_networking'
- 
 gcc -c -Wall -g measure.c
- 
 gcc -Wall -g -o measure measure.o
- 
 gcc -c -Wall -g sender.c
- 
 gcc -Wall -g -o sender sender.o
- 
 make: Leaving directory '/home/yakovkhodorkovski/Desktop/ex4_netwoking_s/ex4_networking'
  

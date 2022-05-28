@@ -62,11 +62,7 @@ int main (){
             printf("Error accepting connection\n");
             exit(1);
         }
-        socklen_t len = sizeof(buffer);
-        if (getsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0){
-            printf("Error getting socket option\n");
-            exit(1);
-        }
+        socklen_t len = sizeof(buffer); 
         strcpy(buffer, i > 0 ? "reno" : "cubic");
         len = sizeof(buffer);
         if (getsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0){
@@ -84,8 +80,7 @@ int main (){
             //Receive data from the client
             printf("Start timer \n");
             struct timespec start, end;
-            clock_gettime(CLOCK_REALTIME, &start); // need to check that this works
-
+            clock_gettime(CLOCK_REALTIME, &start); 
             int bytes_read = -1; 
             while (bytes_read != 0){
                 memset(buffer, 0, sizeof(buffer));

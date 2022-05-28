@@ -1,53 +1,29 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # GNU Make 4.2.1
- 
 # Built for x86_64-pc-linux-gnu
- 
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
- 
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
- 
 # This is free software: you are free to change and redistribute it.
- 
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
- 
-# Make data base, printed on Fri May 27 22:50:03 2022
- 
+# Make data base, printed on Fri May 27 23:41:08 2022
 
 # Variables
- 
 
- 
 # 'override' directive
- 
 GNUMAKEFLAGS := 
- 
 # automatic
- 
 <D = $(patsubst %/,%,$(dir $<))
- 
 # automatic
- 
 ?F = $(notdir $?)
- 
 # environment
- 
 DESKTOP_SESSION = ubuntu
- 
 # default
- 
 .SHELLFLAGS := -c
- 
 # environment
- 
 XDG_SESSION_CLASS = user
- 
 # environment
- 
 SNAP_COMMON = /var/snap/code/common
- 
 # makefile (from 'makefile', line 2)
 OUTCLIENT = sender
 # environment
@@ -211,7 +187,7 @@ CC = gcc
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-3ba08ccd-d85a-4ae3-89c4-20ebe71562b4.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-a4e15898-b592-44d0-8c4b-8a6c52d8b254.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -259,11 +235,11 @@ LC_ALL = C
 # environment
 DBUS_STARTER_BUS_TYPE = session
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/0e40d4e5_61d6_4113_a12d_ef2e66472802
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/cf15ca05_73cc_4de5_b27b_12315993c779
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.2297
+GNOME_TERMINAL_SERVICE = :1.2526
 # default
 SUFFIXES := 
 # environment
@@ -281,7 +257,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 55841
+VSCODE_PID = 59672
 # environment
 DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=32aab59e98b255e7f37cd8ac628a666c
 # variable set hash-table stats:
@@ -302,6 +278,7 @@ DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=32aab59e98b255e7f37cd8a
 # No implicit rules.
 
 # Files
+ 
 
 measure.o: measure.c
 #  Implicit rule search has not been done.
@@ -325,7 +302,6 @@ measure.o: measure.c
 # ^ := measure.c
 # automatic
 # ? := measure.c
- 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/13=8%
 #  recipe to execute (from 'makefile', line 9):
@@ -387,7 +363,7 @@ makefile:
 # Not a target:
 measure.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-27 22:45:56.027243335
+#  Last modified 2022-05-27 23:15:46.782423327
 #  File has been updated.
 #  Successfully updated.
 
@@ -432,6 +408,6 @@ sender.o: sender.c
 # strcache performance: lookups = 45 / hit rate = 51%
 # hash-table stats:
 # Load=22/8192=0%, Rehash=0, Collisions=1/45=2%
-# Finished Make data base on Fri May 27 22:50:03 2022
+# Finished Make data base on Fri May 27 23:41:08 2022
 
  

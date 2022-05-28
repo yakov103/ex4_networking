@@ -28,10 +28,6 @@ int main(){
                 exit(1);
             }
             socklen_t len = sizeof(buffer);
-            if (getsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0) {
-                printf("Error getting socket option\n");
-                exit(1);
-            }
             strcpy(buffer, i > 0 ? "reno" : "cubic");
             len = sizeof(buffer);
             if (getsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len ) < 0) {
