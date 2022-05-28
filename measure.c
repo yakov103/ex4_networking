@@ -17,9 +17,9 @@
 
 
 int main (){
-    char buffer[1024];
+    char buffer[1024];//buffer for the message
     //Create a socket
-    int sock = socket(AF_INET, SOCK_STREAM, 0);
+    int sock = socket(AF_INET, SOCK_STREAM, 0);//TCP
     if (sock < 0){
         printf("Error creating socket\n");
         exit(1);
@@ -73,11 +73,6 @@ int main (){
             printf("Error setting socket option\n");
             exit(1);
         }
-        len = sizeof(buffer);
-        if (getsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0){
-            printf("Error getting socket option\n");
-            exit(1);
-        }
         double avg = 0 ; 
         for (int j = 0 ; j < 5 ; j++ ){
             clientAdressLen  = sizeof(client_addr);
@@ -103,9 +98,7 @@ int main (){
             avg += time_taken;
 
             sleep(1);
-        
-
-
+    
         }
 
     printf("\n Avg time for %s is %f \n", buffer, avg/5);

@@ -38,11 +38,6 @@ int main(){
                 printf("Error setting socket option\n");
                 exit(1);
             }
-            len = sizeof(buffer);
-            if (getsockopt(sock, IPPROTO_TCP, TCP_CONGESTION, buffer, &len) < 0) {
-                printf("Error getting socket option\n");
-                exit(1);
-            }
             // "sockaddr_in" is a the delivered structure for the socket address
             // used for IPv4 communication . for IPv6, use "sockaddr_in6"
 
